@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('download', function () {
+    $pdf = PDF::loadView('welcome');
+    // $pdf->setPaper('a4', 'landscape');
+
+    return $pdf->stream();
+})->name('download');
